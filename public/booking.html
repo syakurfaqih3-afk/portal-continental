@@ -354,8 +354,6 @@
 
         <div class="tabs">
             <button class="tab-btn active" data-tab="pricelist" onclick="switchTab('pricelist')">🏨 Hotel Pricelist</button>
-            <button class="tab-btn" data-tab="casino" onclick="switchTab('casino')">🎰 Casino</button>
-            <button class="tab-btn" data-tab="spa" onclick="switchTab('spa')">💆 Spa & Massage</button>
         </div>
 
         <div style="text-align:center; margin-bottom: 24px;">
@@ -491,125 +489,6 @@
             </div>
         </div>
 
-        <div id="casino" class="tab-content">
-            <div class="grid-2">
-                <div class="card-booking">
-                    <div class="booking-title">🎰 Casino Floor</div>
-                    <div class="booking-price">$50.000</div>
-                    <div class="booking-desc">Per Hour</div>
-                    <div class="booking-notes">
-                        ✓ Exclusive Access<br>
-                        ✓ Professional Dealers<br>
-                        ✓ All Gaming Equipment
-                    </div>
-                </div>
-                <div class="card-booking">
-                    <div class="booking-title">🃏 Casino Table</div>
-                    <div class="booking-price">$50.000</div>
-                    <div class="booking-desc">Per Hour</div>
-                    <div class="booking-notes">
-                        ✓ Private Table Rental<br>
-                        ✓ Dedicated Dealer<br>
-                        ✓ Premium Service
-                    </div>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-day">📋 Booking Form - Casino</div>
-                <form>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Nama Tamu</label>
-                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Tipe Casino</label>
-                            <select class="form-select" required>
-                                <option value="Casino Floor">Casino Floor - $50.000/Jam</option>
-                                <option value="Casino Table">Casino Table - $50.000/Jam</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Durasi (Jam)</label>
-                            <input type="number" class="form-input" min="1" placeholder="Masukkan durasi" required>
-                        </div>
-                        <div class="form-group" style="grid-column: 1/-1;">
-                            <label class="form-label">Tanggal & Jam Mulai</label>
-                            <input type="datetime-local" class="form-input" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
-                </form>
-            </div>
-        </div>
-
-        <div id="spa" class="tab-content">
-            <div class="menu-section">
-                <div class="menu-day">💆 Spa & Massage</div>
-                <div class="menu-package">
-                    <div class="package-name">VIP Ladies 30 Menit</div>
-                    <div class="package-price">$100.000</div>
-                </div>
-                <div class="menu-package">
-                    <div class="package-name">VIP Ladies 60 Menit</div>
-                    <div class="package-price">$200.000</div>
-                </div>
-                <div class="menu-package">
-                    <div class="package-name">Spa Package 10 Menit</div>
-                    <div class="package-price">$130.000</div>
-                </div>
-                <div class="menu-package">
-                    <div class="package-name">Spa Package 30 Menit</div>
-                    <div class="package-price">$390.000</div>
-                </div>
-                <div class="menu-package">
-                    <div class="package-name">Spa Package 60 Menit</div>
-                    <div class="package-price">$700.000</div>
-                </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-day">📋 Booking Form - Spa & Massage</div>
-                <form>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Nama Tamu</label>
-                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Tipe Paket</label>
-                            <select class="form-select" required>
-                                <option value="VIP Ladies 30 Menit">VIP Ladies 30 Menit - $100.000</option>
-                                <option value="VIP Ladies 60 Menit">VIP Ladies 60 Menit - $200.000</option>
-                                <option value="Spa Package 10 Menit">Spa Package 10 Menit - $130.000</option>
-                                <option value="Spa Package 30 Menit">Spa Package 30 Menit - $390.000</option>
-                                <option value="Spa Package 60 Menit">Spa Package 60 Menit - $700.000</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Tanggal Booking</label>
-                            <input type="date" class="form-input" required>
-                        </div>
-                        <div class="form-group" style="grid-column: 1/-1;">
-                            <label class="form-label">Waktu Preferensi</label>
-                            <input type="time" class="form-input" required>
-                        </div>
-                        <div class="form-group" style="grid-column: 1/-1;">
-                            <label class="form-label">Catatan Khusus (Alergi, Preferensi Terapis, dll)</label>
-                            <textarea class="form-input" placeholder="Tulis catatan tambahan" rows="4"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
-                </form>
-            </div>
-        </div>
     </div>
 
     <div class="footer">
