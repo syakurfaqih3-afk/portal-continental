@@ -1,5 +1,5 @@
 {
-  "name": "continental-portal",
+  "name": "continental-web-portal",
   "version": "1.0.0",
   "main": "api/server.js",
   "dependencies": {
