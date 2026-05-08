@@ -1,6 +1,12 @@
 {
+  "buildCommand": "echo 'Building...'",
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/server.js" },
-    { "source": "/(.*)", "destination": "/public/$1" }
+    { "source": "/api/:path*", "destination": "/api/server.js" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/server.js" },
+    { "src": "/(.*)", "dest": "/public/$1" },
+    { "src": "/$", "dest": "/public/index.html" }
   ]
 }
