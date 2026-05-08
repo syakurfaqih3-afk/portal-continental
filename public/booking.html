@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -65,7 +65,7 @@
         .tabs {
             display: flex;
             gap: 10px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -92,9 +92,10 @@
         .tab-content.active {
             display: block;
         }
-        .regulation-button {
+        .regulation-button,
+        .btn-submit,
+        .modal-button {
             display: inline-block;
-            margin: 0 auto 30px;
             padding: 12px 24px;
             background: #d4af37;
             color: #0f3460;
@@ -103,28 +104,113 @@
             font-size: 14px;
             letter-spacing: 1px;
             text-transform: uppercase;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.3s;
+            font-weight: 700;
         }
-        .regulation-button:hover {
+        .regulation-button:hover,
+        .btn-submit:hover,
+        .modal-button:hover {
             background: #f0d06b;
         }
-        .regulation-card {
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
             display: none;
-            background: rgba(15, 52, 96, 0.88);
-            border: 2px solid #d4af37;
-            padding: 28px;
-            margin-bottom: 30px;
-            border-radius: 10px;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-card {
+            width: min(100%, 980px);
+            background: #0f2b4a;
+            border-radius: 24px;
+            border: 2px solid rgba(212, 175, 55, 0.25);
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+        }
+        .modal-header {
+            background: linear-gradient(90deg, #ef476f 0%, #3f88c5 50%, #7c4dff 100%);
+            padding: 28px 32px;
+            color: #ffffff;
+        }
+        .modal-header h2 {
+            margin-bottom: 12px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .modal-header p {
+            color: rgba(255,255,255,0.86);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+        .modal-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .modal-action {
+            padding: 22px 18px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.09);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            color: #ffffff;
+        }
+        .modal-action span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+        }
+        .modal-action h3 {
+            font-size: 16px;
+            margin: 0;
+        }
+        .modal-action p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.82);
+            margin: 0;
+        }
+        .modal-body {
+            padding: 28px 32px 32px;
+        }
+        .modal-section {
+            margin-bottom: 24px;
+        }
+        .modal-section h3 {
+            color: #d4af37;
+            margin-bottom: 14px;
+            font-size: 18px;
+            letter-spacing: 0.8px;
+        }
+        .modal-section p {
             color: #e8d5b7;
             line-height: 1.8;
+            margin-bottom: 8px;
         }
-        .regulation-card.visible {
-            display: block;
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 32px 28px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .close-button {
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
         }
         .card-booking {
             background: rgba(212, 175, 55, 0.08);
@@ -133,7 +219,7 @@
             margin-bottom: 20px;
             border-radius: 8px;
             transition: all 0.3s;
-        
+        }
         .card-booking:hover {
             background: rgba(212, 175, 55, 0.15);
         }
@@ -164,7 +250,7 @@
         }
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
         .menu-section {
@@ -218,7 +304,7 @@
             display: block;
             letter-spacing: 0.5px;
         }
-        .form-input, .form-select {
+        .form-input, .form-select, textarea.form-input {
             width: 100%;
             padding: 12px;
             background: rgba(15, 52, 96, 0.8);
@@ -226,25 +312,9 @@
             color: #e8d5b7;
             font-family: 'Georgia', serif;
         }
-        .form-input:focus, .form-select:focus {
+        .form-input:focus, .form-select:focus, textarea.form-input:focus {
             outline: none;
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-        .btn-submit {
-            padding: 14px 40px;
-            background: #d4af37;
-            color: #0f3460;
-            border: none;
-            font-size: 14px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-        .btn-submit:hover {
-            background: #e8d5b7;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
         .footer {
             text-align: center;
@@ -255,10 +325,22 @@
             font-size: 13px;
             letter-spacing: 1px;
         }
+        @media (max-width: 640px) {
+            .modal-actions {
+                grid-template-columns: 1fr;
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <div class="navbar">
         <div class="navbar-brand">🏨 THE CONTINENTAL</div>
         <div class="navbar-links">
@@ -267,31 +349,66 @@
         </div>
     </div>
 
-    <!-- Main Container -->
     <div class="container">
         <h1 class="page-title">Booking & Reservation</h1>
 
-        <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('pricelist')">🏨 Hotel Pricelist</button>
-            <button class="tab-btn" onclick="switchTab('casino')">🎰 Casino</button>
-            <button class="tab-btn" onclick="switchTab('spa')">💆 Spa & Massage</button>
-        </div>
-        <div style="text-align:center; margin-bottom: 20px;">
-            <button type="button" class="regulation-button" onclick="toggleRegulation()">📜 Lihat Regulasi</button>
-        </div>
-        <div id="regulation-section" class="regulation-card">
-            <h2 style="color:#d4af37; margin-bottom:12px;">Regulasi Layanan Continental</h2>
-            <p>1. Layanan Food & Beverage hanya ditampilkan sebagai informasi menu dan tidak bisa dipesan langsung melalui sistem booking ini.</p>
-            <p>2. Semua permintaan F&B dapat dikonsultasikan langsung dengan tim layanan tamu saat reservasi kamar, ballroom, atau spa.</p>
-            <p>3. Booking resmi hanya berlaku untuk kategori Hotel Pricelist, Casino, dan Spa.</p>
-            <p>4. Untuk reservasi floor, diperlukan minimum 10 orang dan durasi pemesanan harus ditentukan.</p>
-            <p>5. Pembatalan atau perubahan harus dilakukan paling lambat 24 jam sebelum jadwal.</p>
-            <p>6. The Continental berhak menolak reservasi yang tidak memenuhi syarat keamanan atau kebijakan hotel.</p>
-            <p>7. Silakan hubungi resepsionis untuk permintaan khusus terkait menu, diet, atau layanan tambahan.</p>
+            <button class="tab-btn active" data-tab="pricelist" onclick="switchTab('pricelist')">🏨 Hotel Pricelist</button>
+            <button class="tab-btn" data-tab="casino" onclick="switchTab('casino')">🎰 Casino</button>
+            <button class="tab-btn" data-tab="spa" onclick="switchTab('spa')">💆 Spa & Massage</button>
         </div>
 
-        <!-- HOTEL PRICELIST TAB -->
+        <div style="text-align:center; margin-bottom: 24px;">
+            <button type="button" class="regulation-button" onclick="toggleRegulation()">📜 Lihat Regulasi</button>
+        </div>
+
+        <div id="regulation-modal" class="modal-overlay" aria-hidden="true">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>UPDATE REGULASI</h2>
+                    <p>Informasi regulasi layanan terbaru untuk pembayaran, harga, dan kebijakan service Continental.</p>
+                    <div class="modal-actions">
+                        <div class="modal-action">
+                            <span>💵</span>
+                            <h3>Cash Payment</h3>
+                            <p>Pembayaran tunai langsung di resepsionis.</p>
+                        </div>
+                        <div class="modal-action">
+                            <span>📄</span>
+                            <h3>Invoice Payment</h3>
+                            <p>Pembayaran tagihan dapat diajukan untuk klien khusus.</p>
+                        </div>
+                        <div class="modal-action">
+                            <span>📈</span>
+                            <h3>Price Update</h3>
+                            <p>Perubahan harga berlaku sejak tanggal yang tercantum.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <h3>REGULASI PENGOBATAN</h3>
+                        <p>Layanan pengobatan dengan pembayaran tunai dan fasilitas medis khusus akan mengikuti aturan internal Continental.</p>
+                        <p>Jika terdapat obat tambahan atau tindakan khusus, biaya tambahan akan diberlakukan.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>REGULASI KONSULTASI</h3>
+                        <p>Konsultasi kesehatan dengan dokter umum dan spesialis harus dicatat terlebih dahulu.</p>
+                        <p>Reservasi berlaku setelah konfirmasi jadwal dan pembayaran deposit bila diperlukan.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>REGULASI F&B</h3>
+                        <p>Food & Beverage hanya sebagai informasi menu dan harus dikonfirmasi langsung dengan tim layanan tamu.</p>
+                        <p>Pemesanan makanan dan minuman akan ditangani secara terpisah dari booking hotel.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-button close-button" onclick="toggleRegulation()">Tutup</button>
+                    <button type="button" class="modal-button" onclick="toggleRegulation()">Mengerti</button>
+                </div>
+            </div>
+        </div>
+
         <div id="pricelist" class="tab-content active">
             <div class="menu-section">
                 <div class="menu-day">🎲 Private Casino Prices</div>
@@ -305,7 +422,7 @@
                     <div class="package-name">Private Casino Table</div>
                     <div class="package-price">$50.000 / Jam</div>
                     <div class="menu-item">• Meja pribadi untuk grup tertutup</div>
-                    <div class="menu-item">• Pilihan game premium dan keamanan tinggi</div>
+                    <div class="menu-item">• Pengaturan keamanan dan privasi penuh</div>
                 </div>
             </div>
 
@@ -315,12 +432,12 @@
                     <div class="package-name">Hotel Room</div>
                     <div class="package-price">$100.000 / Badai</div>
                     <div class="menu-item">• Kamar mewah dengan fasilitas premium</div>
-                    <div class="menu-item">• Layanan 24 jam dan akses hotel eksklusif</div>
+                    <div class="menu-item">• Layanan 24 jam dan akses eksklusif hotel</div>
                 </div>
                 <div class="menu-package">
                     <div class="package-name">Floor Booking (1, 4, 5)</div>
                     <div class="package-price">$50.000 / Jam</div>
-                    <div class="menu-item">• Ruang privat untuk acara khusus</div>
+                    <div class="menu-item">• Ruang privat untuk acara atau meeting</div>
                     <div class="menu-item">• Minimum 10 orang</div>
                 </div>
             </div>
@@ -340,7 +457,7 @@
                 <div class="menu-package">
                     <div class="package-name">Main Package</div>
                     <div class="package-price">$5.000 / Orang</div>
-                    <div class="menu-item">• Menu premium untuk tamu hotel dan acara</div>
+                    <div class="menu-item">• Paket menu premium untuk tamu hotel</div>
                 </div>
                 <div class="menu-package">
                     <div class="package-name">Special Package</div>
@@ -374,7 +491,6 @@
             </div>
         </div>
 
-        <!-- CASINO TAB -->
         <div id="casino" class="tab-content">
             <div class="grid-2">
                 <div class="card-booking">
@@ -387,7 +503,6 @@
                         ✓ All Gaming Equipment
                     </div>
                 </div>
-
                 <div class="card-booking">
                     <div class="booking-title">🃏 Casino Table</div>
                     <div class="booking-price">$50.000</div>
@@ -399,33 +514,32 @@
                     </div>
                 </div>
             </div>
-
             <div class="menu-section">
                 <div class="menu-day">📋 Booking Form - Casino</div>
                 <form>
                     <div class="grid-2">
                         <div class="form-group">
                             <label class="form-label">Nama Tamu</label>
-                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Tipe Casino</label>
-                            <select class="form-select">
-                                <option>Casino Floor - $50.000/Jam</option>
-                                <option>Casino Table - $50.000/Jam</option>
+                            <select class="form-select" required>
+                                <option value="Casino Floor">Casino Floor - $50.000/Jam</option>
+                                <option value="Casino Table">Casino Table - $50.000/Jam</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Durasi (Jam)</label>
-                            <input type="number" class="form-input" min="1" placeholder="Masukkan durasi">
+                            <input type="number" class="form-input" min="1" placeholder="Masukkan durasi" required>
                         </div>
                         <div class="form-group" style="grid-column: 1/-1;">
                             <label class="form-label">Tanggal & Jam Mulai</label>
-                            <input type="datetime-local" class="form-input">
+                            <input type="datetime-local" class="form-input" required>
                         </div>
                     </div>
                     <button type="submit" class="btn-submit">📨 Submit Booking</button>
@@ -433,78 +547,59 @@
             </div>
         </div>
 
-        <!-- SPA TAB -->
         <div id="spa" class="tab-content">
             <div class="menu-section">
-                <div class="menu-day">💆 VIP Ladies (Accompany VIP Room Rental)</div>
-                
+                <div class="menu-day">💆 Spa & Massage</div>
                 <div class="menu-package">
-                    <div class="package-name">⏱️ 30 Menit</div>
+                    <div class="package-name">VIP Ladies 30 Menit</div>
                     <div class="package-price">$100.000</div>
                 </div>
-
                 <div class="menu-package">
-                    <div class="package-name">⏱️ 60 Menit</div>
+                    <div class="package-name">VIP Ladies 60 Menit</div>
                     <div class="package-price">$200.000</div>
                 </div>
-            </div>
-
-            <div class="menu-section">
-                <div class="menu-day">🧖 Spa Package (Spa 1 Ladies + Room)</div>
-                
                 <div class="menu-package">
-                    <div class="package-name">⏱️ 10 Menit</div>
+                    <div class="package-name">Spa Package 10 Menit</div>
                     <div class="package-price">$130.000</div>
                 </div>
-
                 <div class="menu-package">
-                    <div class="package-name">⏱️ 30 Menit</div>
+                    <div class="package-name">Spa Package 30 Menit</div>
                     <div class="package-price">$390.000</div>
                 </div>
-
                 <div class="menu-package">
-                    <div class="package-name">⏱️ 60 Menit</div>
+                    <div class="package-name">Spa Package 60 Menit</div>
                     <div class="package-price">$700.000</div>
                 </div>
             </div>
-
-            <div class="menu-section">
-                <div class="menu-day">💆 Relax yourself with massage & spa Conti</div>
-                <div class="booking-desc">
-                    Professional therapists ready to accompany you with the best massage and spa experience. 
-                    Come and experience the benefits of our premium treatments.
-                </div>
-            </div>
-
             <div class="menu-section">
                 <div class="menu-day">📋 Booking Form - Spa & Massage</div>
                 <form>
                     <div class="grid-2">
                         <div class="form-group">
                             <label class="form-label">Nama Tamu</label>
-                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">No. Telepon</label>
-                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Tipe Paket</label>
-                            <select class="form-select">
-                                <option>VIP Ladies 30 Menit - $100.000</option>
-                                <option>VIP Ladies 60 Menit - $200.000</option>
-                                <option>Spa Package 10 Menit - $130.000</option>
-                                <option>Spa Package 30 Menit - $390.000</option>
-                                <option>Spa Package 60 Menit - $700.000</option>
+                            <select class="form-select" required>
+                                <option value="VIP Ladies 30 Menit">VIP Ladies 30 Menit - $100.000</option>
+                                <option value="VIP Ladies 60 Menit">VIP Ladies 60 Menit - $200.000</option>
+                                <option value="Spa Package 10 Menit">Spa Package 10 Menit - $130.000</option>
+                                <option value="Spa Package 30 Menit">Spa Package 30 Menit - $390.000</option>
+                                <option value="Spa Package 60 Menit">Spa Package 60 Menit - $700.000</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Tanggal Booking</label>
-                            <input type="date" class="form-input">
+                            <input type="date" class="form-input" required>
                         </div>
                         <div class="form-group" style="grid-column: 1/-1;">
                             <label class="form-label">Waktu Preferensi</label>
-                            <input type="time" class="form-input">
+                            <input type="time" class="form-input" required>
                         </div>
                         <div class="form-group" style="grid-column: 1/-1;">
                             <label class="form-label">Catatan Khusus (Alergi, Preferensi Terapis, dll)</label>
@@ -517,45 +612,30 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         © 2026 The Continental. Luxury Experience Awaits You.
     </div>
 
     <script>
-        function switchTab(tabName) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Remove active class from all buttons
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
+        function toggleRegulation() {
+            const modal = document.getElementById('regulation-modal');
+            const isActive = modal.classList.toggle('active');
+            modal.setAttribute('aria-hidden', !isActive);
         }
 
-        function toggleRegulation() {
-            const section = document.getElementById('regulation-section');
-            section.classList.toggle('visible');
-            if (section.classList.contains('visible')) {
-                section.scrollIntoView({ behavior: 'smooth' });
+        function switchTab(tabName) {
+            if (window.continentalBooking) {
+                window.continentalBooking.switchTab(tabName);
             }
         }
 
-        // Form submissions
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Booking request submitted! Tim kami akan menghubungi Anda segera.');
-            });
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('regulation-modal');
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                toggleRegulation();
+            }
         });
     </script>
- 
- <script src="hotelpricelist.js
+    <script src="booking.js"></script>
 </body>
 </html>

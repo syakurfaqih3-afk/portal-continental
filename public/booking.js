@@ -5,7 +5,7 @@
 class ContinentalBooking {
     constructor() {
         this.bookings = [];
-        this.currentTab = 'accommodation';
+        this.currentTab = 'pricelist';
         this.init();
     }
 
@@ -20,7 +20,8 @@ class ContinentalBooking {
         // Tab switching
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                this.switchTab(e.target.textContent.toLowerCase().split(' ')[1]);
+                const tabName = btn.dataset.tab || e.target.textContent.toLowerCase().split(' ')[1];
+                this.switchTab(tabName);
             });
         });
 
@@ -57,8 +58,10 @@ class ContinentalBooking {
             this.currentTab = tabName;
         }
 
-        // Add active class to clicked button
-        event.target.classList.add('active');
+        const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
     }
 
     setupFormValidations() {
