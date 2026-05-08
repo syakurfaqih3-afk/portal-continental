@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Continental - Price List</title>
+    <title>The Continental - Portal Medis Terpadu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -12,129 +12,327 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #2c5aa0 0%, #5b7ec9 50%, #a577d9 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-        }
-        .gradient-header {
-            background: linear-gradient(135deg, #ff4757 0%, #ff6b7a 100%);
             color: white;
         }
-        .card-hover {
+        .navbar {
+            background: rgba(44, 90, 160, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .navbar-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        .btn-nav {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .btn-nav:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+        }
+        .container-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .left-section h1 {
+            font-size: 120px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .left-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .left-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.9);
+            max-width: 400px;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .btn-action {
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: white;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card-staff {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 24px;
             transition: all 0.3s ease;
         }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .card-staff:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.4);
         }
-        .price-badge {
-            font-weight: 700;
+        .staff-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .staff-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .staff-info h3 {
             font-size: 18px;
-            padding: 8px 12px;
-            border-radius: 6px;
+            font-weight: 700;
         }
-        .price-casino { background: #e3f2fd; color: #1976d2; }
-        .price-hotel { background: #e8f5e9; color: #388e3c; }
-        .price-medical { background: #fce4ec; color: #c2185b; }
-        .section-icon { font-size: 32px; }
-        .detail-text { color: #666; font-size: 13px; }
+        .staff-info p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        .staff-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .staff-stat {
+            background: rgba(0,212,255,0.2);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .staff-stat.pink {
+            background: rgba(220,100,200,0.2);
+        }
+        .staff-stat h4 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        .staff-stat.pink h4 {
+            color: #ff69b4;
+        }
+        .staff-stat p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .info-footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) {
+            .container-main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .left-section h1 {
+                font-size: 60px;
+            }
+            .left-section h2 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="gradient-header py-10 px-6 shadow-lg">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-2">🏨 THE CONTINENTAL PORTAL</h1>
-            <p class="text-red-100 text-lg">Price List & Service Regulations</p>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-brand">
+            🏥 THE CONTINENTAL
+            <span style="font-size: 13px; color: rgba(255,255,255,0.7);">Portal Medis</span>
+        </div>
+        <div class="navbar-buttons">
+            <button class="btn-nav">👥 Recruitment</button>
+            <button class="btn-nav">🔐 Login Staf</button>
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto py-12 px-6">
-        <!-- Filter Buttons -->
-        <div class="flex gap-3 mb-10 justify-center flex-wrap">
-            <button onclick="filterSection('all')" class="px-6 py-2 rounded-full font-bold text-white bg-gray-500 hover:bg-gray-600 transition">All Services</button>
-            <button onclick="filterSection('casino')" class="px-6 py-2 rounded-full font-bold text-white bg-blue-500 hover:bg-blue-600 transition">🎰 Casino</button>
-            <button onclick="filterSection('hotel')" class="px-6 py-2 rounded-full font-bold text-white bg-green-500 hover:bg-green-600 transition">🏨 Hotel</button>
-            <button onclick="filterSection('medical')" class="px-6 py-2 rounded-full font-bold text-white bg-pink-500 hover:bg-pink-600 transition">⚕️ Medical</button>
+    <!-- Main Content -->
+    <div class="container-main">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>iCare</h1>
+            <h2>Portal Medis Terpadu</h2>
+            <p>Dapatkan layanan medis in-character yang realistis, profesional, dan cepat untuk segala kebutuhan kesehatan Anda.</p>
+            
+            <div class="button-grid">
+                <button class="btn-action btn-primary" onclick="scrollToSection('services')">
+                    ❤️ Lihat Layanan
+                </button>
+                <button class="btn-action" onclick="scrollToSection('schedule')">
+                    📅 Jadwal Praktek
+                </button>
+                <button class="btn-action" onclick="scrollToSection('regulation')">
+                    📋 Lihat Regulasi
+                </button>
+                <button class="btn-action" onclick="scrollToSection('structure')">
+                    🏗️ Struktur EMS
+                </button>
+            </div>
         </div>
 
-        <!-- Content Grid -->
-        <div id="contentContainer" class="space-y-8"></div>
-    </main>
+        <!-- Right Section -->
+        <div class="right-section">
+            <!-- Staff On Duty -->
+            <div class="card-staff">
+                <div class="staff-header">
+                    <div class="staff-icon">👨‍⚕️</div>
+                    <div class="staff-info">
+                        <h3>Staff On Duty</h3>
+                        <p>Tim medis yang siap melayani Anda</p>
+                    </div>
+                </div>
+                <div class="staff-content">
+                    <div class="staff-stat">
+                        <h4 id="total-staff">0</h4>
+                        <p>Total Staff</p>
+                    </div>
+                    <div class="staff-stat pink">
+                        <h4 id="active-meetings">0</h4>
+                        <p>Consultation</p>
+                    </div>
+                </div>
+                <div class="info-footer">📊 Data diperbarui secara real-time</div>
+            </div>
+
+            <!-- Hospital 1 -->
+            <div class="card-staff">
+                <div class="staff-header">
+                    <div class="staff-icon" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);">🏥</div>
+                    <div class="staff-info">
+                        <h3>ALTA HOSPITAL</h3>
+                        <p>Emergency Medical Services</p>
+                    </div>
+                </div>
+                <div class="staff-content">
+                    <div class="staff-stat">
+                        <h4>19</h4>
+                        <p>🩺 Staf</p>
+                    </div>
+                    <div class="staff-stat pink">
+                        <h4>0</h4>
+                        <p>📞 Konsultasi</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hospital 2 -->
+            <div class="card-staff">
+                <div class="staff-header">
+                    <div class="staff-icon" style="background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);">🏥</div>
+                    <div class="staff-info">
+                        <h3>ROXWOOD HOSPITAL</h3>
+                        <p>Medical Care</p>
+                    </div>
+                </div>
+                <div class="staff-content">
+                    <div class="staff-stat">
+                        <h4>13</h4>
+                        <p>🩺 Staf</p>
+                    </div>
+                    <div class="staff-stat pink">
+                        <h4>0</h4>
+                        <p>📞 Konsultasi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        let priceData = {};
-        const colors = {
-            casino: { bg: 'bg-blue-50', border: 'border-blue-500', badge: 'price-casino', icon: '🎰' },
-            hotel: { bg: 'bg-green-50', border: 'border-green-500', badge: 'price-hotel', icon: '🏨' },
-            medical: { bg: 'bg-pink-50', border: 'border-pink-500', badge: 'price-medical', icon: '⚕️' }
-        };
+        function scrollToSection(section) {
+            alert('Section: ' + section);
+        }
 
-        async function loadData() {
+        // Load dynamic data
+        async function loadStats() {
             try {
                 const res = await fetch('/api/server');
-                priceData = await res.json();
-                renderAll();
-            } catch (e) { 
-                console.error("Error loading API", e);
-                renderStaticData();
+                const data = await res.json();
+                
+                // Update stats if available
+                const totalItems = Object.values(data).reduce((sum, cat) => {
+                    return sum + (cat.items ? cat.items.length : 0);
+                }, 0);
+                
+                document.getElementById('total-staff').textContent = totalItems;
+            } catch (e) {
+                console.log('Stats loading deferred');
             }
         }
 
-        function renderStaticData() {
-            // Fallback data jika API error
-            priceData = {
-                casino: { section: "CASINO SERVICES", items: [] },
-                hotel: { section: "HOTEL ACCOMMODATIONS", items: [] },
-                medical: { section: "MEDICAL SERVICES", items: [] }
-            };
-        }
-
-        function renderAll() {
-            filterSection('all');
-        }
-
-        function filterSection(section) {
-            const container = document.getElementById('contentContainer');
-            container.innerHTML = '';
-
-            const sections = section === 'all' ? ['casino', 'hotel', 'medical'] : [section];
-
-            sections.forEach(sec => {
-                if (priceData[sec]) {
-                    const color = colors[sec];
-                    const data = priceData[sec];
-                    
-                    const html = `
-                        <div class="section-container">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="section-icon">${color.icon}</span>
-                                <h2 class="text-3xl font-bold text-gray-800">${data.section}</h2>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                ${data.items.map(item => `
-                                    <div class="${color.bg} border-l-4 ${color.border} p-6 rounded-lg card-hover shadow-md">
-                                        <div class="flex justify-between items-start mb-3">
-                                            <div class="flex-1">
-                                                <h3 class="font-bold text-gray-800 text-base mb-1">${item.title}</h3>
-                                                <p class="text-gray-600 text-sm">${item.description}</p>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <span class="price-badge ${color.badge}">${item.price}</span>
-                                        </div>
-                                        <p class="detail-text">${item.details}</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                    container.innerHTML += html;
-                }
-            });
-        }
-
-        loadData();
+        loadStats();
     </script>
 </body>
 </html>
