@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Continental - Portal Medis Terpadu</title>
+    <title>The Continental - Luxury Hotel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -12,195 +12,191 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(135deg, #2c5aa0 0%, #5b7ec9 50%, #a577d9 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Georgia', serif;
+            color: #e8d5b7;
             min-height: 100vh;
-            color: white;
+            overflow-x: hidden;
         }
         .navbar {
-            background: rgba(44, 90, 160, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 16px 32px;
+            background: rgba(15, 52, 96, 0.95);
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 2px solid #d4af37;
         }
         .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 24px;
             font-weight: bold;
-            font-size: 18px;
+            color: #d4af37;
+            letter-spacing: 2px;
         }
-        .navbar-buttons {
+        .navbar-links {
             display: flex;
-            gap: 12px;
+            gap: 30px;
         }
-        .btn-nav {
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .nav-link {
+            color: #e8d5b7;
+            text-decoration: none;
             font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
         }
-        .btn-nav:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.6);
+        .nav-link:hover {
+            color: #d4af37;
         }
-        .container-main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .left-section h1 {
-            font-size: 120px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #00d4ff, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .left-section h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-        .left-section p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: rgba(255,255,255,0.9);
-            max-width: 400px;
-        }
-        .button-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .btn-action {
-            padding: 16px 20px;
-            border-radius: 10px;
-            border: 2px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-        .btn-action:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.6);
-            transform: translateY(-2px);
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            border: none;
-            color: white;
-        }
-        .btn-primary:hover {
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
-        }
-        .right-section {
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(15, 52, 96, 0.7), rgba(15, 52, 96, 0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(212,175,55,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-        .card-staff {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-        .card-staff:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255,255,255,0.4);
-        }
-        .staff-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .staff-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 24px;
+            align-items: center;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
         }
-        .staff-info h3 {
+        .ornament-top {
+            font-size: 40px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        .hero-title {
+            font-size: 80px;
+            color: #d4af37;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        .hero-subtitle {
             font-size: 18px;
-            font-weight: 700;
+            color: #e8d5b7;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            line-height: 1.8;
         }
-        .staff-info p {
-            font-size: 13px;
-            color: rgba(255,255,255,0.7);
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .staff-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .staff-stat {
-            background: rgba(0,212,255,0.2);
-            border-radius: 10px;
-            padding: 16px;
-            text-align: center;
-        }
-        .staff-stat.pink {
-            background: rgba(220,100,200,0.2);
-        }
-        .staff-stat h4 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #00d4ff;
-        }
-        .staff-stat.pink h4 {
-            color: #ff69b4;
-        }
-        .staff-stat p {
-            font-size: 12px;
-            color: rgba(255,255,255,0.7);
+        .btn-luxury {
+            padding: 12px 32px;
+            border: 2px solid #d4af37;
+            background: transparent;
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
             text-transform: uppercase;
-            margin-top: 4px;
+            font-family: 'Georgia', serif;
         }
-        .info-footer {
+        .btn-luxury:hover {
+            background: #d4af37;
+            color: #0f3460;
+        }
+        .services-section {
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
             text-align: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 12px;
-            margin-top: 16px;
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .service-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid #d4af37;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+        }
+        .service-card:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .service-name {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .service-desc {
+            font-size: 14px;
+            color: #e8d5b7;
+            line-height: 1.6;
+        }
+        .tagline-section {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            margin: 60px 0;
+        }
+        .tagline-main {
+            font-size: 36px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .tagline-sub {
+            font-size: 16px;
+            color: #e8d5b7;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+        .footer {
+            background: rgba(15, 52, 96, 0.95);
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+            color: #e8d5b7;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .footer-contact {
+            margin-bottom: 20px;
+        }
+        .footer-link {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
         }
         @media (max-width: 768px) {
-            .container-main {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .hero-title {
+                font-size: 48px;
             }
-            .left-section h1 {
-                font-size: 60px;
-            }
-            .left-section h2 {
-                font-size: 24px;
+            .navbar-links {
+                gap: 15px;
+                font-size: 12px;
             }
         }
     </style>
@@ -208,131 +204,126 @@
 <body>
     <!-- Navbar -->
     <div class="navbar">
-        <div class="navbar-brand">
-            🏥 THE CONTINENTAL
-            <span style="font-size: 13px; color: rgba(255,255,255,0.7);">Portal Medis</span>
-        </div>
-        <div class="navbar-buttons">
-            <button class="btn-nav">👥 Recruitment</button>
-            <button class="btn-nav">🔐 Login Staf</button>
+        <div class="navbar-brand">🏨 THE CONTINENTAL</div>
+        <div class="navbar-links">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#rooms" class="nav-link">Rooms</a>
+            <a href="#dining" class="nav-link">Dining</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="container-main">
-        <!-- Left Section -->
-        <div class="left-section">
-            <h1>iCare</h1>
-            <h2>Portal Medis Terpadu</h2>
-            <p>Dapatkan layanan medis in-character yang realistis, profesional, dan cepat untuk segala kebutuhan kesehatan Anda.</p>
-            
-            <div class="button-grid">
-                <button class="btn-action btn-primary" onclick="scrollToSection('services')">
-                    ❤️ Lihat Layanan
-                </button>
-                <button class="btn-action" onclick="scrollToSection('schedule')">
-                    📅 Jadwal Praktek
-                </button>
-                <button class="btn-action" onclick="scrollToSection('regulation')">
-                    📋 Lihat Regulasi
-                </button>
-                <button class="btn-action" onclick="scrollToSection('structure')">
-                    🏗️ Struktur EMS
-                </button>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="ornament-top">❋ ◈ ❋</div>
+        <h1 class="hero-title">CONTINENTAL</h1>
+        <div class="hero-subtitle">
+            LUXURY STAY. WORLD CLASS PLAY.<br>
+            UNFORGETTABLE EXPERIENCE.
+        </div>
+        <div class="hero-buttons">
+            <button class="btn-luxury">Book Now</button>
+            <button class="btn-luxury">View Services</button>
+            <button class="btn-luxury">Contact Us</button>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section" id="services">
+        <h2 class="section-title">Our Premium Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏰</div>
+                <div class="service-name">Luxury Rooms</div>
+                <div class="service-desc">Experience ultimate luxury with our premium suites featuring world-class amenities and 24/7 service.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎰</div>
+                <div class="service-name">Premium Casino</div>
+                <div class="service-desc">Feel the thrill with exclusive gaming floors. Only for the most discerning guests. Min. buy-in $50.000</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍽️</div>
+                <div class="service-name">Fine Dining</div>
+                <div class="service-desc">Savor exquisite culinary creations by our executive chefs. Michelin-inspired cuisine and premium beverages.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <div class="service-name">Spa & Wellness</div>
+                <div class="service-desc">Indulge in rejuvenating treatments. Relax and celebrate every moment at our world-class spa.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏊</div>
+                <div class="service-name">Rooftop Pool</div>
+                <div class="service-desc">Live the high life at our exclusive rooftop. Pool parties with live DJ and panoramic city views.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⭐</div>
+                <div class="service-name">24/7 Service</div>
+                <div class="service-desc">Premium concierge service available round the clock. Your wish is our command.</div>
             </div>
         </div>
+    </div>
 
-        <!-- Right Section -->
-        <div class="right-section">
-            <!-- Staff On Duty -->
-            <div class="card-staff">
-                <div class="staff-header">
-                    <div class="staff-icon">👨‍⚕️</div>
-                    <div class="staff-info">
-                        <h3>Staff On Duty</h3>
-                        <p>Tim medis yang siap melayani Anda</p>
-                    </div>
-                </div>
-                <div class="staff-content">
-                    <div class="staff-stat">
-                        <h4 id="total-staff">0</h4>
-                        <p>Total Staff</p>
-                    </div>
-                    <div class="staff-stat pink">
-                        <h4 id="active-meetings">0</h4>
-                        <p>Consultation</p>
-                    </div>
-                </div>
-                <div class="info-footer">📊 Data diperbarui secara real-time</div>
-            </div>
+    <!-- Tagline Section -->
+    <div class="tagline-section">
+        <div class="tagline-main">STAY • PLAY • RELAX</div>
+        <div class="tagline-sub">
+            At The Continental, every guest deserves an extraordinary experience.<br>
+            From the moment you arrive, you'll understand why we're the destination for the elite.
+        </div>
+    </div>
 
-            <!-- Hospital 1 -->
-            <div class="card-staff">
-                <div class="staff-header">
-                    <div class="staff-icon" style="background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);">🏥</div>
-                    <div class="staff-info">
-                        <h3>ALTA HOSPITAL</h3>
-                        <p>Emergency Medical Services</p>
-                    </div>
-                </div>
-                <div class="staff-content">
-                    <div class="staff-stat">
-                        <h4>19</h4>
-                        <p>🩺 Staf</p>
-                    </div>
-                    <div class="staff-stat pink">
-                        <h4>0</h4>
-                        <p>📞 Konsultasi</p>
-                    </div>
-                </div>
+    <!-- Additional Info -->
+    <div class="services-section">
+        <h2 class="section-title">Why Choose The Continental?</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">👑</div>
+                <div class="service-name">Prestige</div>
+                <div class="service-desc">Established haven for high society and distinguished guests worldwide.</div>
             </div>
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <div class="service-name">Discretion</div>
+                <div class="service-desc">Your privacy is our priority. Complete confidentiality and security guaranteed.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌟</div>
+                <div class="service-name">Excellence</div>
+                <div class="service-desc">Uncompromising commitment to perfection in every detail.</div>
+            </div>
+        </div>
+    </div>
 
-            <!-- Hospital 2 -->
-            <div class="card-staff">
-                <div class="staff-header">
-                    <div class="staff-icon" style="background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);">🏥</div>
-                    <div class="staff-info">
-                        <h3>ROXWOOD HOSPITAL</h3>
-                        <p>Medical Care</p>
-                    </div>
-                </div>
-                <div class="staff-content">
-                    <div class="staff-stat">
-                        <h4>13</h4>
-                        <p>🩺 Staf</p>
-                    </div>
-                    <div class="staff-stat pink">
-                        <h4>0</h4>
-                        <p>📞 Konsultasi</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-contact">
+            📍 143 - Your Prime Location | 📞 Companies App | 🌐 www.thecontinental.com
+        </div>
+        <div>
+            © 2026 The Continental Hotel. Your Luxury. Our Promise.
         </div>
     </div>
 
     <script>
-        function scrollToSection(section) {
-            alert('Section: ' + section);
-        }
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
 
-        // Load dynamic data
-        async function loadStats() {
-            try {
-                const res = await fetch('/api/server');
-                const data = await res.json();
-                
-                // Update stats if available
-                const totalItems = Object.values(data).reduce((sum, cat) => {
-                    return sum + (cat.items ? cat.items.length : 0);
-                }, 0);
-                
-                document.getElementById('total-staff').textContent = totalItems;
-            } catch (e) {
-                console.log('Stats loading deferred');
-            }
-        }
-
-        loadStats();
+        // Button clicks
+        document.querySelectorAll('.btn-luxury').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Welcome to The Continental. ' + this.textContent);
+            });
+        });
     </script>
 </body>
 </html>
