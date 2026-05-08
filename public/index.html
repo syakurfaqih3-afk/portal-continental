@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Continental - Update Regulasi</title>
+    <title>Portal Continental - Price List</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -27,148 +27,117 @@
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-        .badge-info {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 12px;
-            border-radius: 4px;
-            color: #856404;
-            margin-top: 12px;
-        }
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .section-header-icon {
-            font-size: 28px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .price-text {
+        .price-badge {
             font-weight: 700;
-            color: #00a86b;
             font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 6px;
         }
+        .price-casino { background: #e3f2fd; color: #1976d2; }
+        .price-hotel { background: #e8f5e9; color: #388e3c; }
+        .price-medical { background: #fce4ec; color: #c2185b; }
+        .section-icon { font-size: 32px; }
+        .detail-text { color: #666; font-size: 13px; }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <div class="gradient-header py-8 px-6 shadow-lg">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-2">UPDATE REGULASI</h1>
-            <p class="text-red-100">Informasi Pembaruan Tarif dan Peraturan</p>
+    <div class="gradient-header py-10 px-6 shadow-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-2">🏨 THE CONTINENTAL PORTAL</h1>
+            <p class="text-red-100 text-lg">Price List & Service Regulations</p>
         </div>
     </div>
 
-    <main class="max-w-6xl mx-auto py-12 px-6">
-        
-        <!-- Top Cards Navigation -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <!-- Cash Payment -->
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-8 text-white card-hover cursor-pointer shadow-md">
-                <div class="text-4xl mb-3">💳</div>
-                <h3 class="text-xl font-bold mb-1">Cash Payment</h3>
-                <p class="text-blue-100 text-sm">Pembayaran Tunai</p>
-            </div>
-
-            <!-- Invoice Payment -->
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-8 text-white card-hover cursor-pointer shadow-md">
-                <div class="text-4xl mb-3">📋</div>
-                <h3 class="text-xl font-bold mb-1">Invoice Payment</h3>
-                <p class="text-green-100 text-sm">Pembayaran Tagihan</p>
-            </div>
-
-            <!-- Price Update -->
-            <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg p-8 text-white card-hover cursor-pointer shadow-md">
-                <div class="text-4xl mb-3">📈</div>
-                <h3 class="text-xl font-bold mb-1">Price Update</h3>
-                <p class="text-pink-100 text-sm">Update Harga</p>
-            </div>
+    <main class="max-w-7xl mx-auto py-12 px-6">
+        <!-- Filter Buttons -->
+        <div class="flex gap-3 mb-10 justify-center flex-wrap">
+            <button onclick="filterSection('all')" class="px-6 py-2 rounded-full font-bold text-white bg-gray-500 hover:bg-gray-600 transition">All Services</button>
+            <button onclick="filterSection('casino')" class="px-6 py-2 rounded-full font-bold text-white bg-blue-500 hover:bg-blue-600 transition">🎰 Casino</button>
+            <button onclick="filterSection('hotel')" class="px-6 py-2 rounded-full font-bold text-white bg-green-500 hover:bg-green-600 transition">🏨 Hotel</button>
+            <button onclick="filterSection('medical')" class="px-6 py-2 rounded-full font-bold text-white bg-pink-500 hover:bg-pink-600 transition">⚕️ Medical</button>
         </div>
 
-        <!-- Section 1: Cash Payment Regulations -->
-        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <div class="section-header">
-                <div class="section-header-icon bg-blue-500 text-white rounded-full">👨‍⚕️</div>
-                <h2 class="text-2xl font-bold text-blue-600">REGULASI PENGOBATAN (CASH)</h2>
-            </div>
-            <p class="text-gray-600 mb-6">Layanan pengobatan dengan pembayaran tunai</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded card-hover">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h4 class="font-bold text-gray-800">TREATMENT RS</h4>
-                            <p class="text-gray-600 text-sm">Perawatan di Rumah Sakit</p>
-                        </div>
-                    </div>
-                    <div class="price-text">$200</div>
-                </div>
-
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded card-hover">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h4 class="font-bold text-gray-800">TREATMENT LUAR RS</h4>
-                            <p class="text-gray-600 text-sm">Perawatan di Luar Rumah Sakit</p>
-                        </div>
-                    </div>
-                    <div class="price-text">$220</div>
-                </div>
-            </div>
-
-            <div class="badge-info">
-                <div class="font-bold mb-1">⚠️ Catatan Penting</div>
-                <p class="text-sm">Jika terdapat luka dan diresepkan obat atau bandage tambahan, akan ditambah <span class="font-bold">$20</span></p>
-            </div>
-        </div>
-
-        <!-- Section 2: Consultation Regulations -->
-        <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <div class="section-header">
-                <div class="section-header-icon bg-green-500 text-white rounded-full">👨‍⚕️</div>
-                <h2 class="text-2xl font-bold text-green-600">REGULASI KONSULTASI KESEHATAN (CASH)</h2>
-            </div>
-            <p class="text-gray-600 mb-6">Layanan konsultasi kesehatan dengan dokter umum dan spesialis</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded card-hover">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h4 class="font-bold text-gray-800">DOKTER UMUM</h4>
-                            <p class="text-gray-600 text-sm">Konsultasi Dokter Umum</p>
-                        </div>
-                    </div>
-                    <div class="price-text">$1,300 - $1,800</div>
-                </div>
-
-                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded card-hover">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h4 class="font-bold text-gray-800">DOKTER SPESIALIS</h4>
-                            <p class="text-gray-600 text-sm">Konsultasi Dokter Spesialis</p>
-                        </div>
-                    </div>
-                    <div class="price-text">$1,900 - $3,500</div>
-                </div>
-            </div>
-
-            <div class="badge-info">
-                <div class="font-bold mb-1">ℹ️ Informasi Penting</div>
-                <p class="text-sm">Regulasi ini berlaku efektif mulai 02 Januari 2026</p>
-            </div>
-        </div>
-
-        <!-- Footer Buttons -->
-        <div class="flex gap-4 justify-center mt-8">
-            <button class="bg-gray-400 hover:bg-gray-500 text-white px-8 py-3 rounded-lg font-bold transition">Tutup</button>
-            <button class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-bold transition">Mengerti</button>
-        </div>
+        <!-- Content Grid -->
+        <div id="contentContainer" class="space-y-8"></div>
     </main>
+
+    <script>
+        let priceData = {};
+        const colors = {
+            casino: { bg: 'bg-blue-50', border: 'border-blue-500', badge: 'price-casino', icon: '🎰' },
+            hotel: { bg: 'bg-green-50', border: 'border-green-500', badge: 'price-hotel', icon: '🏨' },
+            medical: { bg: 'bg-pink-50', border: 'border-pink-500', badge: 'price-medical', icon: '⚕️' }
+        };
+
+        async function loadData() {
+            try {
+                const res = await fetch('/api/server');
+                priceData = await res.json();
+                renderAll();
+            } catch (e) { 
+                console.error("Error loading API", e);
+                renderStaticData();
+            }
+        }
+
+        function renderStaticData() {
+            // Fallback data jika API error
+            priceData = {
+                casino: { section: "CASINO SERVICES", items: [] },
+                hotel: { section: "HOTEL ACCOMMODATIONS", items: [] },
+                medical: { section: "MEDICAL SERVICES", items: [] }
+            };
+        }
+
+        function renderAll() {
+            filterSection('all');
+        }
+
+        function filterSection(section) {
+            const container = document.getElementById('contentContainer');
+            container.innerHTML = '';
+
+            const sections = section === 'all' ? ['casino', 'hotel', 'medical'] : [section];
+
+            sections.forEach(sec => {
+                if (priceData[sec]) {
+                    const color = colors[sec];
+                    const data = priceData[sec];
+                    
+                    const html = `
+                        <div class="section-container">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="section-icon">${color.icon}</span>
+                                <h2 class="text-3xl font-bold text-gray-800">${data.section}</h2>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                ${data.items.map(item => `
+                                    <div class="${color.bg} border-l-4 ${color.border} p-6 rounded-lg card-hover shadow-md">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <div class="flex-1">
+                                                <h3 class="font-bold text-gray-800 text-base mb-1">${item.title}</h3>
+                                                <p class="text-gray-600 text-sm">${item.description}</p>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="price-badge ${color.badge}">${item.price}</span>
+                                        </div>
+                                        <p class="detail-text">${item.details}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += html;
+                }
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
 
     <script>
         // Close button functionality
