@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Continental - Booking System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Georgia', serif;
+            color: #e8d5b7;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(15, 52, 96, 0.95);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            color: #e8d5b7;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+        .nav-link:hover, .nav-link.active {
+            border: 1px solid #d4af37;
+            color: #d4af37;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .page-title {
+            text-align: center;
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: 2px solid #d4af37;
+            background: transparent;
+            color: #d4af37;
+            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+        }
+        .tab-btn:hover, .tab-btn.active {
+            background: #d4af37;
+            color: #0f3460;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card-booking {
+            background: rgba(212, 175, 55, 0.08);
+            border: 2px solid #d4af37;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .card-booking:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+        .booking-title {
+            font-size: 22px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .booking-price {
+            font-size: 28px;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .booking-desc {
+            color: #e8d5b7;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .booking-notes {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 12px;
+            border-left: 3px solid #d4af37;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #e8d5b7;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .menu-section {
+            background: rgba(212, 175, 55, 0.08);
+            border: 2px solid #d4af37;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+        .menu-day {
+            font-size: 18px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .menu-package {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .package-name {
+            font-size: 16px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .menu-item {
+            font-size: 13px;
+            color: #e8d5b7;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+        .package-price {
+            font-size: 16px;
+            color: #d4af37;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        .menu-package:last-child {
+            border-bottom: none;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            color: #d4af37;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+            letter-spacing: 0.5px;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(15, 52, 96, 0.8);
+            border: 1px solid #d4af37;
+            color: #e8d5b7;
+            font-family: 'Georgia', serif;
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        .btn-submit {
+            padding: 14px 40px;
+            background: #d4af37;
+            color: #0f3460;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .btn-submit:hover {
+            background: #e8d5b7;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 2px solid #d4af37;
+            margin-top: 60px;
+            color: #e8d5b7;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-brand">🏨 THE CONTINENTAL</div>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="booking.html" class="nav-link active">Booking</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1 class="page-title">Booking & Reservation</h1>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('accommodation')">🏰 Accommodation</button>
+            <button class="tab-btn" onclick="switchTab('casino')">🎰 Casino</button>
+            <button class="tab-btn" onclick="switchTab('fnb')">🍽️ Food & Beverage</button>
+            <button class="tab-btn" onclick="switchTab('spa')">💆 Spa & Massage</button>
+        </div>
+
+        <!-- ACCOMMODATION TAB -->
+        <div id="accommodation" class="tab-content active">
+            <div class="grid-2">
+                <div class="card-booking">
+                    <div class="booking-title">🛏️ Hotel Room</div>
+                    <div class="booking-price">$100.000</div>
+                    <div class="booking-desc">Per Badai (1 Bad Dai = 12 Jam)</div>
+                    <div class="booking-notes">
+                        ✓ Includes HT Protection<br>
+                        ✓ 24/7 Premium Service<br>
+                        ✓ Luxury Amenities
+                    </div>
+                </div>
+
+                <div class="card-booking">
+                    <div class="booking-title">📍 Floor Booking (1, 4, 5)</div>
+                    <div class="booking-price">$50.000</div>
+                    <div class="booking-desc">Per Hour</div>
+                    <div class="booking-notes">
+                        ✓ Minimum 10 Orang<br>
+                        ✓ Private Meeting Space<br>
+                        ⚠️ Additional Charges for Food/Talent Package
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">📋 Booking Form - Accommodation</div>
+                <form>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Nama Tamu</label>
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">No. Telepon</label>
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipe Booking</label>
+                            <select class="form-select">
+                                <option>Hotel Room - $100.000/Badai</option>
+                                <option>Floor 1 Booking - $50.000/Jam</option>
+                                <option>Floor 4 Booking - $50.000/Jam</option>
+                                <option>Floor 5 Booking - $50.000/Jam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Jumlah Orang (Min 10 untuk Floor Booking)</label>
+                            <input type="number" class="form-input" min="1" placeholder="Masukkan jumlah">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tanggal Check-in</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Durasi</label>
+                            <input type="number" class="form-input" placeholder="Jam / Badai">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CASINO TAB -->
+        <div id="casino" class="tab-content">
+            <div class="grid-2">
+                <div class="card-booking">
+                    <div class="booking-title">🎰 Casino Floor</div>
+                    <div class="booking-price">$50.000</div>
+                    <div class="booking-desc">Per Hour</div>
+                    <div class="booking-notes">
+                        ✓ Exclusive Access<br>
+                        ✓ Professional Dealers<br>
+                        ✓ All Gaming Equipment
+                    </div>
+                </div>
+
+                <div class="card-booking">
+                    <div class="booking-title">🃏 Casino Table</div>
+                    <div class="booking-price">$50.000</div>
+                    <div class="booking-desc">Per Hour</div>
+                    <div class="booking-notes">
+                        ✓ Private Table Rental<br>
+                        ✓ Dedicated Dealer<br>
+                        ✓ Premium Service
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">📋 Booking Form - Casino</div>
+                <form>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Nama Tamu</label>
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">No. Telepon</label>
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipe Casino</label>
+                            <select class="form-select">
+                                <option>Casino Floor - $50.000/Jam</option>
+                                <option>Casino Table - $50.000/Jam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Durasi (Jam)</label>
+                            <input type="number" class="form-input" min="1" placeholder="Masukkan durasi">
+                        </div>
+                        <div class="form-group" style="grid-column: 1/-1;">
+                            <label class="form-label">Tanggal & Jam Mulai</label>
+                            <input type="datetime-local" class="form-input">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- FNB TAB -->
+        <div id="fnb" class="tab-content">
+            <div class="menu-section">
+                <div class="menu-day">📅 Monday - Wednesday Menu</div>
+                
+                <div class="menu-package">
+                    <div class="package-name">🍽️ Main Package</div>
+                    <div class="package-price">$5.000</div>
+                    <div class="menu-item">🥗 Appetizer: Carpaccio di Manzo</div>
+                    <div class="menu-item">🦞 Main Course: Lobster Thermidor</div>
+                    <div class="menu-item">🍹 Signature Drinks: The White Lady & Espresso Martini</div>
+                    <div class="menu-item">🍷 Alcohol: La Conti Burgundy '90 Wine</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">✨ Special Package</div>
+                    <div class="package-price">$10.000</div>
+                    <div class="menu-item">🥗 Appetizer: Carpaccio di Manzo</div>
+                    <div class="menu-item">🦞 Main Course: Lobster Thermidor</div>
+                    <div class="menu-item">🍮 Dessert: Panna Cotta alla Vaniglia</div>
+                    <div class="menu-item">🍹 Signature Drinks: The White Lady, Espresso Martini & Old Fashioned</div>
+                    <div class="menu-item">🥃 Alcohol: Isabella 1926 Whiskey + Ginger Tea (penawar)</div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">📅 Thursday - Sunday Menu</div>
+                
+                <div class="menu-package">
+                    <div class="package-name">🍽️ Main Package</div>
+                    <div class="package-price">$5.000</div>
+                    <div class="menu-item">🥗 Appetizer: Prosciutto e Melone</div>
+                    <div class="menu-item">🥩 Main Course: Wagyu Burgundy Ribeye</div>
+                    <div class="menu-item">🍹 Signature Drinks: The White Lady & Espresso Martini</div>
+                    <div class="menu-item">🍷 Alcohol: La Conti Burgundy '90 Wine</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">✨ Special Package</div>
+                    <div class="package-price">$10.000</div>
+                    <div class="menu-item">🥗 Appetizer: Prosciutto e Melone</div>
+                    <div class="menu-item">🥩 Main Course: Wagyu Burgundy Ribeye</div>
+                    <div class="menu-item">🍮 Dessert: Tiramisu Classico</div>
+                    <div class="menu-item">🍹 Signature Drinks: The White Lady, Espresso Martini & Old Fashioned</div>
+                    <div class="menu-item">🥃 Alcohol: Isabella 1926 Whiskey + Ginger Tea (penawar)</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">☕ Additional</div>
+                    <div class="package-price">$5.000</div>
+                    <div class="menu-item">🍵 Ginger Tea (Pembelian diluar package)</div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">📋 Booking Form - Food & Beverage</div>
+                <form>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Nama Tamu</label>
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">No. Telepon</label>
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tanggal Event</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Jumlah Tamu</label>
+                            <input type="number" class="form-input" min="10" placeholder="Minimum 10 orang">
+                        </div>
+                        <div class="form-group" style="grid-column: 1/-1;">
+                            <label class="form-label">Pilih Menu</label>
+                            <select class="form-select">
+                                <option>Mon-Wed Main Package - $5.000/orang</option>
+                                <option>Mon-Wed Special Package - $10.000/orang</option>
+                                <option>Thu-Sun Main Package - $5.000/orang</option>
+                                <option>Thu-Sun Special Package - $10.000/orang</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="grid-column: 1/-1;">
+                            <label class="form-label">Catatan Tambahan</label>
+                            <textarea class="form-input" placeholder="Tulis permintaan khusus atau alergi" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- SPA TAB -->
+        <div id="spa" class="tab-content">
+            <div class="menu-section">
+                <div class="menu-day">💆 VIP Ladies (Accompany VIP Room Rental)</div>
+                
+                <div class="menu-package">
+                    <div class="package-name">⏱️ 30 Menit</div>
+                    <div class="package-price">$100.000</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">⏱️ 60 Menit</div>
+                    <div class="package-price">$200.000</div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">🧖 Spa Package (Spa 1 Ladies + Room)</div>
+                
+                <div class="menu-package">
+                    <div class="package-name">⏱️ 10 Menit</div>
+                    <div class="package-price">$130.000</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">⏱️ 30 Menit</div>
+                    <div class="package-price">$390.000</div>
+                </div>
+
+                <div class="menu-package">
+                    <div class="package-name">⏱️ 60 Menit</div>
+                    <div class="package-price">$700.000</div>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">💆 Relax yourself with massage & spa Conti</div>
+                <div class="booking-desc">
+                    Professional therapists ready to accompany you with the best massage and spa experience. 
+                    Come and experience the benefits of our premium treatments.
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-day">📋 Booking Form - Spa & Massage</div>
+                <form>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Nama Tamu</label>
+                            <input type="text" class="form-input" placeholder="Masukkan nama lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">No. Telepon</label>
+                            <input type="tel" class="form-input" placeholder="Masukkan nomor telepon">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipe Paket</label>
+                            <select class="form-select">
+                                <option>VIP Ladies 30 Menit - $100.000</option>
+                                <option>VIP Ladies 60 Menit - $200.000</option>
+                                <option>Spa Package 10 Menit - $130.000</option>
+                                <option>Spa Package 30 Menit - $390.000</option>
+                                <option>Spa Package 60 Menit - $700.000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tanggal Booking</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group" style="grid-column: 1/-1;">
+                            <label class="form-label">Waktu Preferensi</label>
+                            <input type="time" class="form-input">
+                        </div>
+                        <div class="form-group" style="grid-column: 1/-1;">
+                            <label class="form-label">Catatan Khusus (Alergi, Preferensi Terapis, dll)</label>
+                            <textarea class="form-input" placeholder="Tulis catatan tambahan" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">📨 Submit Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2026 The Continental. Luxury Experience Awaits You.
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Booking request submitted! Tim kami akan menghubungi Anda segera.');
+            });
+        });
+    </script>
+</body>
+</html>
