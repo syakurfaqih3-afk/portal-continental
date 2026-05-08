@@ -92,6 +92,36 @@
         .tab-content.active {
             display: block;
         }
+        .regulation-button {
+            display: inline-block;
+            margin: 0 auto 30px;
+            padding: 12px 24px;
+            background: #d4af37;
+            color: #0f3460;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .regulation-button:hover {
+            background: #f0d06b;
+        }
+        .regulation-card {
+            display: none;
+            background: rgba(15, 52, 96, 0.88);
+            border: 2px solid #d4af37;
+            padding: 28px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            color: #e8d5b7;
+            line-height: 1.8;
+        }
+        .regulation-card.visible {
+            display: block;
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -103,7 +133,7 @@
             margin-bottom: 20px;
             border-radius: 8px;
             transition: all 0.3s;
-        }
+        
         .card-booking:hover {
             background: rgba(212, 175, 55, 0.15);
         }
@@ -246,6 +276,19 @@
             <button class="tab-btn active" onclick="switchTab('accommodation')">🏰 Accommodation</button>
             <button class="tab-btn" onclick="switchTab('casino')">🎰 Casino</button>
             <button class="tab-btn" onclick="switchTab('spa')">💆 Spa & Massage</button>
+        </div>
+        <div style="text-align:center; margin-bottom: 20px;">
+            <button type="button" class="regulation-button" onclick="toggleRegulation()">📜 Lihat Regulasi</button>
+        </div>
+        <div id="regulation-section" class="regulation-card">
+            <h2 style="color:#d4af37; margin-bottom:12px;">Regulasi Layanan Continental</h2>
+            <p>1. Layanan Food & Beverage hanya ditampilkan sebagai informasi menu dan bukan untuk dipesan melalui sistem booking ini.</p>
+            <p>2. Semua permintaan F&B dapat dikonsultasikan langsung dengan tim layanan tamu saat reservasi kamar, ballroom, atau spa.</p>
+            <p>3. Booking resmi hanya berlaku untuk kategori Accommodation, Casino, dan Spa.</p>
+            <p>4. Untuk reservasi floor, diperlukan minimum 10 orang dan durasi pemesanan harus ditentukan.</p>
+            <p>5. Pembatalan atau perubahan harus dilakukan paling lambat 24 jam sebelum jadwal.</p>
+            <p>6. The Continental berhak menolak reservasi yang tidak memenuhi syarat keamanan atau kebijakan hotel.</p>
+            <p>7. Silakan hubungi resepsionis untuk permintaan khusus terkait menu, diet, atau layanan tambahan.</p>
         </div>
 
         <!-- ACCOMMODATION TAB -->
@@ -476,6 +519,14 @@
             
             // Add active class to clicked button
             event.target.classList.add('active');
+        }
+
+        function toggleRegulation() {
+            const section = document.getElementById('regulation-section');
+            section.classList.toggle('visible');
+            if (section.classList.contains('visible')) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Form submissions
