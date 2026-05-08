@@ -212,16 +212,6 @@ class ContinentalBooking {
                 multiplier = parseInt(data.durasi || 1);
                 break;
 
-            case 'fnb':
-                const menuType = data['pilih-menu'] || '';
-                if (menuType.includes('Main Package')) {
-                    basePrice = 5000;
-                } else if (menuType.includes('Special Package')) {
-                    basePrice = 10000;
-                }
-                multiplier = parseInt(data['jumlah-tamu'] || 1);
-                break;
-
             case 'spa':
                 const spaType = data['tipe-paket'] || '';
                 if (spaType.includes('VIP Ladies 30 Menit')) basePrice = 100000;

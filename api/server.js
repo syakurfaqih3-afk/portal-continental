@@ -132,9 +132,6 @@ function handleBookingSubmission(req, res) {
             }
         } else if (bookingData.category === 'casino') {
             totalPrice = 50000 * (parseInt(bookingData.durasi) || 1);
-        } else if (bookingData.category === 'fnb') {
-            const basePrice = bookingData['pilih-menu']?.includes('Special') ? 10000 : 5000;
-            totalPrice = basePrice * (parseInt(bookingData['jumlah-tamu']) || 1);
         } else if (bookingData.category === 'spa') {
             const spaPrices = {
                 'VIP Ladies 30 Menit': 100000,
